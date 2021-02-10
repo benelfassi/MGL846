@@ -133,20 +133,12 @@ if(rs1.next()==false)
             document.open();
             // step 3.5
             PdfPTable table1 = new PdfPTable(3); // 1 columns.
-  PdfPCell cell00 = new PdfPCell(new Paragraph("Payslip\nFEB-2015",font2));
+  PdfPCell cell00 = new PdfPCell(new Paragraph("Payslip\n"+month+"-"+year,font2));
   cell00.setBorder(PdfPCell.NO_BORDER);
   cell00.setPaddingTop(18);
     PdfPCell cell01 = new PdfPCell(new Paragraph(""));
   cell01.setBorder(PdfPCell.NO_BORDER);
   
- //File filepath = new File("./src/java/cc.jpg");
- 
-
-        BufferedImage img = null;
-        try {
-          img = ImageIO.read(new File("images/cc.jpg"));
-      } catch (IOException e) {
-      }
  
     ServletContext context = getServletContext(); // Inherited from HttpServlet.
     String Imagepath = context.getResource("/cc.jpg").getPath();

@@ -34,6 +34,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -123,15 +124,19 @@ if(rs1.next()==false)
             document.open();
             // step 3.5
             PdfPTable table1 = new PdfPTable(3); // 1 columns.
-  PdfPCell cell00 = new PdfPCell(new Paragraph("Payslip\nFEB-2015",font2));
+  PdfPCell cell00 = new PdfPCell(new Paragraph("Payslip\n"+month+"-"+year,font2));
   cell00.setBorder(PdfPCell.NO_BORDER);
   cell00.setPaddingTop(18);
     PdfPCell cell01 = new PdfPCell(new Paragraph(""));
   cell01.setBorder(PdfPCell.NO_BORDER);
-          
-            Image image = Image.getInstance("cc.jpg");
+  
+            ServletContext context = getServletContext(); // Inherited from HttpServlet.
+            String Imagepath = context.getResource("/cc.jpg").getPath();
+ 
+            Image image = Image.getInstance(Imagepath);
+         
             PdfPCell cell0 = new PdfPCell(image, true);
-cell0.setBorder(PdfPCell.NO_BORDER);
+            cell0.setBorder(PdfPCell.NO_BORDER);
           
            // cell0.setHorizontalAlignment(Element.ALIGN_RIGHT);
             //PdfPCell cell1 = new PdfPCell(new Paragraph("Mr. NILESH POPATBHAI LATHIYA"));

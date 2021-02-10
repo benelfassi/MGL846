@@ -34,6 +34,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -136,12 +137,15 @@ if(rs.getFloat("sum1")==0.0 && rs1.getFloat("emps")==0.0)
             PdfPTable table1 = new PdfPTable(3); // 1 columns.
            // table1.setWidthPercentage(75);
             
-  PdfPCell cell00 = new PdfPCell(new Paragraph("Monthly Payroll Summary\nFEB-2015",font2));
+  PdfPCell cell00 = new PdfPCell(new Paragraph("Monthly Payroll Summary\n"+month+"-"+year,font2));
   cell00.setBorder(PdfPCell.NO_BORDER);
   cell00.setPaddingTop(18);
   cell00.setColspan(2);
           
-            Image image = Image.getInstance("cc.jpg");
+                        ServletContext context = getServletContext(); // Inherited from HttpServlet.
+            String Imagepath = context.getResource("/cc.jpg").getPath();
+ 
+            Image image = Image.getInstance(Imagepath);
             PdfPCell cell0 = new PdfPCell(image, true);
 cell0.setBorder(PdfPCell.NO_BORDER);
           

@@ -73,9 +73,9 @@ public class paysalary extends HttpServlet {
      days[11]=31;
      
      String month=
-             mon[now.get(Calendar.MONTH)+1];
+             mon[now.get(Calendar.MONTH)];
      Integer tdays=
-             days[now.get(Calendar.MONTH)+1];
+             days[now.get(Calendar.MONTH)];
              int year=now.get(Calendar.YEAR);
      
      Class.forName("com.mysql.jdbc.Driver").newInstance();
