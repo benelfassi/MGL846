@@ -71,7 +71,7 @@ public class generatepayslip extends HttpServlet {
      //String id="Ultimate01";    
      Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll123","root","root");
+           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      
             PreparedStatement ps = con.prepareStatement("SELECT * from employee where id=?");
             ps.setString(1, id);

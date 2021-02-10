@@ -35,7 +35,7 @@ public class ValidateServlet extends HttpServlet {
                
        try {Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll123","root","root");
+           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
     
           PreparedStatement ps = con.prepareStatement("SELECT * from "+usertype+" WHERE id=?");
           ps.setString(1, uname);

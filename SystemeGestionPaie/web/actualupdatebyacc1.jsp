@@ -62,7 +62,7 @@
  try {       
       Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll123","root","root");
+           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      //(FirstName,LastName,ID,DOB,Designation) 
            
             PreparedStatement ps = con.prepareStatement("select * from employee where id=?");

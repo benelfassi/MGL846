@@ -30,7 +30,7 @@ public class validate1 extends HttpServlet {
 String id=(String) session.getAttribute("id");          
       try{ Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll123","root","root");
+           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
    // System.out.println("1");
           PreparedStatement ps = con.prepareStatement("SELECT * from accountant WHERE id=?");
           ps.setString(1, id);

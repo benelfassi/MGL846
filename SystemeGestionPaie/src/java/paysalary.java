@@ -80,7 +80,7 @@ public class paysalary extends HttpServlet {
      
      Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll123","root","root");
+           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      
 //           PreparedStatement ps1 = con.prepareStatement("SELECT  FROM payslip where month=? and year=?");
            
