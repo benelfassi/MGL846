@@ -26,14 +26,21 @@ import com.itextpdf.text.html.WebColors;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.PrintWriter;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.file.FileSystems;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -93,6 +100,8 @@ rs.next();
             ResultSet rs1 = ps1.executeQuery();
             ResultSet rs2 = ps2.executeQuery();
             rs2.next();
+            
+           
 if(rs1.next()==false)
 {
     response.sendRedirect("generatepayslip.jsp?id=Payslip of "+month+"/"+year+" is not generated OR Record of this Payslip is not available in our Database");
@@ -129,10 +138,22 @@ if(rs1.next()==false)
   cell00.setPaddingTop(18);
     PdfPCell cell01 = new PdfPCell(new Paragraph(""));
   cell01.setBorder(PdfPCell.NO_BORDER);
-          
-            Image image = Image.getInstance("cc.jpg");
+  
+ //File filepath = new File("./src/java/cc.jpg");
+ 
+
+        BufferedImage img = null;
+        try {
+          img = ImageIO.read(new File("images/cc.jpg"));
+      } catch (IOException e) {
+      }
+ 
+    ServletContext context = getServletContext(); // Inherited from HttpServlet.
+    String Imagepath = context.getResource("/cc.jpg").getPath();
+ 
+            Image image = Image.getInstance(Imagepath);
             PdfPCell cell0 = new PdfPCell(image, true);
-cell0.setBorder(PdfPCell.NO_BORDER);
+            cell0.setBorder(PdfPCell.NO_BORDER);
           
            // cell0.setHorizontalAlignment(Element.ALIGN_RIGHT);
             //PdfPCell cell1 = new PdfPCell(new Paragraph("Mr. NILESH POPATBHAI LATHIYA"));
