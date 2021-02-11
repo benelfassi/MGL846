@@ -5,11 +5,16 @@
  */
 
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.Calendar;
+import java.util.Properties;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -80,7 +85,18 @@ public class paysalary extends HttpServlet {
      
      Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
+       InputStream inputStream = this.getClass().getClassLoader()
+                .getResourceAsStream("resources/config.properties");
+        
+        Properties properties = new Properties();
+
+        // load the inputStream using the Properties
+        properties.load(inputStream);
+        
+        String ServerName_db = "jdbc:mysql://"+ properties.getProperty("ServerName")+":3306/"+ properties.getProperty("database");
+        Connection con=DriverManager.getConnection(ServerName_db,properties.getProperty("userName"),properties.getProperty("password"));
+
+     //Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      
 //           PreparedStatement ps1 = con.prepareStatement("SELECT  FROM payslip where month=? and year=?");
            
@@ -165,6 +181,9 @@ public class paysalary extends HttpServlet {
             //out.println("<br><br><center><button onclick=\"history.go(-1)\">Back</button></center></div>");
             out.println("</body>");
             out.println("</html>");
+            con.close();
+            ps.close();
+            inputStream.close();
  }        else
  {
       response.sendRedirect("index.jsp?id=Your session may be expired. You have to login first");

@@ -1,13 +1,17 @@
 
 //package validator;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
+import java.util.Properties;
 import javax.servlet.*;
 import javax.servlet.http.HttpSession;
 
@@ -27,10 +31,23 @@ public class validate1 extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
              HttpSession session=request.getSession();
-String id=(String) session.getAttribute("id");          
+        String id=(String) session.getAttribute("id"); 
+        ServletContext context = getServletContext(); // Inherited from HttpServlet.
       try{ Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
+        InputStream inputStream = this.getClass().getClassLoader()
+                .getResourceAsStream("project.properties");
+        
+        Properties properties = new Properties();
+
+        // load the inputStream using the Properties
+        properties.load(inputStream);
+        
+        String ServerName_db = "jdbc:mysql://"+ properties.getProperty("ServerName")+":3306/"+ properties.getProperty("database");
+        Connection con=DriverManager.getConnection(ServerName_db,properties.getProperty("userName"),properties.getProperty("password"));
+
+     //Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
+    
    // System.out.println("1");
           PreparedStatement ps = con.prepareStatement("SELECT * from accountant WHERE id=?");
           ps.setString(1, id);

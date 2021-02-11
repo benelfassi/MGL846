@@ -26,11 +26,15 @@ import com.itextpdf.text.html.WebColors;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -72,7 +76,19 @@ public class generatereportbyaccz extends HttpServlet {
      //String id="Ultimate01";    
      Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
+       
+       InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("resources/config.properties");
+        
+        Properties properties = new Properties();
+
+        // load the inputStream using the Properties
+        properties.load(inputStream);
+        
+        String ServerName_db = "jdbc:mysql://"+ properties.getProperty("ServerName")+":3306/"+ properties.getProperty("database");
+        Connection con=DriverManager.getConnection(ServerName_db,properties.getProperty("userName"),properties.getProperty("password"));
+
+     //Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      
             PreparedStatement ps = con.prepareStatement("SELECT SUM(basicsalary) as sum1 FROM payslip where month=? and year=?");
             ps.setString(1, month);
@@ -141,8 +157,7 @@ if(rs.getFloat("sum1")==0.0 && rs1.getFloat("emps")==0.0)
   cell00.setBorder(PdfPCell.NO_BORDER);
   cell00.setPaddingTop(18);
   cell00.setColspan(2);
-          
-                        ServletContext context = getServletContext(); // Inherited from HttpServlet.
+           ServletContext context = getServletContext(); // Inherited from HttpServlet.     
             String Imagepath = context.getResource("/cc.jpg").getPath();
  
             Image image = Image.getInstance(Imagepath);
@@ -602,6 +617,8 @@ cell53.setBorderWidth(1f);
             baos.writeTo(os);
             os.flush();
             os.close();
+            con.close();
+            inputStream.close();
         }
          else
           {

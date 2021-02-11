@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import static java.lang.String.valueOf;
 import java.sql.Connection;
@@ -15,7 +18,9 @@ import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.Properties;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -80,7 +85,18 @@ public class applyleave extends HttpServlet {
         
         Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
+        InputStream inputStream = this.getClass().getClassLoader()
+                .getResourceAsStream("resources/config.properties");
+        
+        Properties properties = new Properties();
+
+        // load the inputStream using the Properties
+        properties.load(inputStream);
+        
+        String ServerName_db = "jdbc:mysql://"+ properties.getProperty("ServerName")+":3306/"+ properties.getProperty("database");
+        Connection con=DriverManager.getConnection(ServerName_db,properties.getProperty("userName"),properties.getProperty("password"));
+
+     //Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      //(FirstName,LastName,ID,DOB,Designation) 
             //String query = "INSERT INTO Employee " + " VALUES ('"+fname+"','"+lname+"','"+id+"','"+dob+"','"+phoneno+"','"+designation+"','"+date+"')";
             
@@ -120,6 +136,7 @@ public class applyleave extends HttpServlet {
                 
        ps.close();
  con.close();
+ inputStream.close();
  }else
  {
    //out.println("<h4 style=\"color:red;margin-bottom: 5px;padding-left: 5px;\">Your session may be expired. You have to login first</h4>");

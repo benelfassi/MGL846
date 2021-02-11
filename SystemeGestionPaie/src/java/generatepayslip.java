@@ -28,6 +28,8 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -36,6 +38,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -77,8 +80,19 @@ public class generatepayslip extends HttpServlet {
           //  }
      //String id="Ultimate01";    
      Class.forName("com.mysql.jdbc.Driver").newInstance();
-            
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
+                
+       InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("resources/config.properties");
+
+        Properties properties = new Properties();
+
+        properties.load(inputStream);
+        
+        String ServerName_db = "jdbc:mysql://"+ properties.getProperty("ServerName")+":3306/"+ properties.getProperty("database");
+   
+        Connection con=DriverManager.getConnection(ServerName_db,properties.getProperty("userName"),properties.getProperty("password"));
+ 
+     //Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      
             PreparedStatement ps = con.prepareStatement("SELECT * from employee where id=?");
             ps.setString(1, id);
@@ -139,8 +153,8 @@ if(rs1.next()==false)
     PdfPCell cell01 = new PdfPCell(new Paragraph(""));
   cell01.setBorder(PdfPCell.NO_BORDER);
   
- 
     ServletContext context = getServletContext(); // Inherited from HttpServlet.
+    //ServletContext context = getServletContext(); // Inherited from HttpServlet. 
     String Imagepath = context.getResource("/cc.jpg").getPath();
  
             Image image = Image.getInstance(Imagepath);
@@ -604,6 +618,8 @@ cell53.setBorderWidth(1f);
             baos.writeTo(os);
             os.flush();
             os.close();
+            con.close();
+            inputStream.close();
         }
          else
           {

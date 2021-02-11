@@ -4,13 +4,18 @@
  * and open the template in the editor.
  */
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +50,18 @@ public class delete extends HttpServlet {
         
         Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","");
+          InputStream inputStream = this.getClass().getClassLoader()
+                .getResourceAsStream("resources/config.properties");
+        
+        Properties properties = new Properties();
+
+        // load the inputStream using the Properties
+        properties.load(inputStream);
+        
+        String ServerName_db = "jdbc:mysql://"+ properties.getProperty("ServerName")+":3306/"+ properties.getProperty("database");
+        Connection con=DriverManager.getConnection(ServerName_db,properties.getProperty("userName"),properties.getProperty("password"));
+
+     //Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
      //(FirstName,LastName,ID,DOB,Designation) 
            
             PreparedStatement ps = con.prepareStatement("delete from employee where ID=?");
@@ -57,6 +73,8 @@ public class delete extends HttpServlet {
             
             out.println("Employee Details Successfully deleted !!");
                 out.println("<br><br><center><button onclick=\"history.go(-2)\">Back</button></center>");
+                con.close();
+                inputStream.close();
  }  else
  {
         response.sendRedirect("index.jsp?id=Your session may be expired. You have to login first");

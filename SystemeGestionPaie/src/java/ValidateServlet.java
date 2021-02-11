@@ -1,13 +1,18 @@
 
 //package validator;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.URL;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
+import java.util.Properties;
 import javax.servlet.*;
 import javax.servlet.http.HttpSession;
 
@@ -35,7 +40,15 @@ public class ValidateServlet extends HttpServlet {
                
        try {Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
+     
+    InputStream  fileInput = getClass().getClassLoader().getResourceAsStream("resources/config.properties");
+
+    Properties properties = new Properties(); 
+    properties.load(fileInput);
+    String ServerName_db = "jdbc:mysql://"+ properties.getProperty("ServerName")+":3306/"+ properties.getProperty("database");
+    Connection con= DriverManager.getConnection(ServerName_db,properties.getProperty("userName"),properties.getProperty("password"));
+
+     //Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/payroll","root","root");
     
           PreparedStatement ps = con.prepareStatement("SELECT * from "+usertype+" WHERE id=?");
           ps.setString(1, uname);
@@ -77,6 +90,7 @@ public class ValidateServlet extends HttpServlet {
          rs.close();
          ps.close();
          con.close();
+         fileInput.close();
          }
        
          

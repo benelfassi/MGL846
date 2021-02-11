@@ -3,32 +3,38 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/paysalary.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/generatepayslip.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/generatepayslipbyaccz.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/web/main.css</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/nbproject/genfiles.properties</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/add1.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/update.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/validate1.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/displayemployee.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/applyleave.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/web/actualupdatebyaccz.jsp</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/ValidateServlet.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/web/actualupdate.jsp</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/displayemployee1.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/addaccountant.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/validateservlet1.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/updatebyacc1.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/web/index.jsp</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/build.xml</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/add.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/web/admin.jsp</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/web/actualupdatebyacc1.jsp</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/updatebyaccz.java</file>
-            <file>file:/C:/Users/abenelfassi/PayRoll-Management-System/src/java/generatereportbyaccz.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/applyleave.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/generatereportbyacc1.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/addaccountant.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/database/payroll.sql</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/welcomeemployee.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/welcomeaccountant1.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/actualupdatebyacc1.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/updatebyaccz.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/displayemployee.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/generatepayslip.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/Welcomejsp.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/generatepayslipbyaccz.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/generatepayslipbyaccz.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/generatereport.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/actualupdate.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/generatepayslipbyacc1.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/update.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/generatepayslip.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/index.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/updatebyacc1.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/update.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/add.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/generatereportbyaccz.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/delete.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/applyleave.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/paysalary.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/displayemployee1.java</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/generatereportbyaccz.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/web/welcomeaccountantz.jsp</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/nbproject/project.xml</file>
+            <file>file:/C:/Users/abenelfassi/school-project/MGL846/SystemeGestionPaie/src/java/add1.java</file>
         </group>
     </open-files>
 </project-private>
