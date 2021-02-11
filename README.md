@@ -18,11 +18,11 @@ https://tomcat.apache.org/download-80.cgi
 
 -to open the project, start the NetBeans, and from the main navigation menu, go to File , choose the option Open Project, and then Select the project folder from your local machine. 
 
--to log in using a user account, use the following combination:
+-to log in using a user account, use the following combination from the tables(Employee, accountant):
 
 Username: id
 
-Password: id_dob (data of birth)
+Password: id_dob (date of birth)
 
 example of an employee:
 
